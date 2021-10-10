@@ -1,0 +1,23 @@
+#set up properties
+PROJECT_ID: omega-post-325903
+DATASET_NAME: product_data
+
+server:
+    port: ${DEFAULT_PORT:80}
+
+spring:
+    application:
+        name: gcp-bigquery
+    cloud:
+       config:
+            namespace: default
+            enabled: true
+            name: Cloud
+            profile: dev, cloud, bigquery
+            label: master
+       gcp:
+            project-id: ${PROJECT_ID:omega-post-325903}
+            credentials:
+                location: classpath:key.json  
+            bigquery:
+                datasetName: ${DATASET_NAME:product_data}  
